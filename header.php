@@ -18,11 +18,11 @@
             
             <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
                 <ul class="nav-list">
-                    <li><a href="#home"><?php esc_html_e('Home', 'my-esport-theme'); ?></a></li>
-                    <li><a href="#shop"><?php esc_html_e('Shop', 'my-esport-theme'); ?></a></li>
-                    <li><a href="#collection"><?php esc_html_e('Collection', 'my-esport-theme'); ?></a></li>
-                    <li><a href="#about"><?php esc_html_e('About', 'my-esport-theme'); ?></a></li>
-                    <li><a href="#contact"><?php esc_html_e('Contact', 'my-esport-theme'); ?></a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e('Home', 'my-esport-theme'); ?></a></li>
+                    <li><a href="<?php echo function_exists('wc_get_page_permalink') ? esc_url(wc_get_page_permalink('shop')) : esc_url(home_url('/shop')); ?>"><?php esc_html_e('Shop', 'my-esport-theme'); ?></a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#collection"><?php esc_html_e('Collection', 'my-esport-theme'); ?></a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#about"><?php esc_html_e('About', 'my-esport-theme'); ?></a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#contact"><?php esc_html_e('Contact', 'my-esport-theme'); ?></a></li>
                 </ul>
             </nav>
 
