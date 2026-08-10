@@ -89,8 +89,27 @@
             </div>
         </section>
 
+        <!-- Collection Section -->
+        <section id="collection" class="collection-section">
+            <div class="container">
+                <div class="collection-inner">
+                    <div class="collection-content">
+                        <span class="eyebrow"><?php esc_html_e('NEW SEASON', 'my-esport-theme'); ?></span>
+                        <h2 class="section-heading"><?php esc_html_e('Everyday Essentials', 'my-esport-theme'); ?></h2>
+                        <p class="section-description"><?php esc_html_e('Simple pieces designed to work together across your wardrobe.', 'my-esport-theme'); ?></p>
+                        <div>
+                            <a href="#shop" class="btn btn-primary"><?php esc_html_e('Explore Collection', 'my-esport-theme'); ?></a>
+                        </div>
+                    </div>
+                    <div class="collection-image">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1485230895905-31298c772db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="<?php esc_attr_e('Everyday essentials collection', 'my-esport-theme'); ?>">
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Promotion Section -->
-        <section class="promotion-section">
+        <section id="promotion" class="promotion-section">
             <img loading="lazy" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="<?php esc_attr_e('Fashion promotion', 'my-esport-theme'); ?>" class="promotion-bg">
             <div class="promotion-overlay"></div>
             <div class="container">
@@ -98,23 +117,8 @@
                     <span class="eyebrow"><?php esc_html_e('LIMITED OFFER', 'my-esport-theme'); ?></span>
                     <h2 class="section-heading"><?php esc_html_e('Up To 30% Off Selected Items', 'my-esport-theme'); ?></h2>
                     <p class="section-description"><?php esc_html_e('Discover selected styles at special prices for a limited time.', 'my-esport-theme'); ?></p>
-                    <a href="#shop" class="btn btn-white"><?php esc_html_e('Shop Sale', 'my-esport-theme'); ?></a>
+                    <a href="#shop" class="btn btn-primary"><?php esc_html_e('Shop Sale', 'my-esport-theme'); ?></a>
                 </div>
-            </div>
-        </section>
-
-        <!-- Collection Section -->
-        <section id="collection" class="collection-section">
-            <div class="collection-content">
-                <span class="eyebrow"><?php esc_html_e('NEW SEASON', 'my-esport-theme'); ?></span>
-                <h2 class="section-heading"><?php esc_html_e('Everyday Essentials', 'my-esport-theme'); ?></h2>
-                <p class="section-description"><?php esc_html_e('Simple pieces designed to work together across your wardrobe.', 'my-esport-theme'); ?></p>
-                <div>
-                    <a href="#shop" class="btn btn-primary"><?php esc_html_e('Explore Collection', 'my-esport-theme'); ?></a>
-                </div>
-            </div>
-            <div class="collection-image">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1485230895905-31298c772db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="<?php esc_attr_e('Everyday essentials collection', 'my-esport-theme'); ?>">
             </div>
         </section>
 
