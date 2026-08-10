@@ -72,3 +72,4 @@ access_log
 # FTP / deploy secrets (credentials are stored in GitHub Secrets)
 .ftpconfig
 sftp-config.json
+CLAUDE.md
