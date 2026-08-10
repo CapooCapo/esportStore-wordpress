@@ -154,16 +154,18 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="about-section container">
-            <div class="about-image">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1558769132-cb1fac084092?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="<?php esc_attr_e('About our clothing brand', 'my-esport-theme'); ?>">
-            </div>
-            <div class="about-content">
-                <span class="eyebrow"><?php esc_html_e('ABOUT US', 'my-esport-theme'); ?></span>
-                <h2 class="section-heading"><?php esc_html_e('Clothing For Everyday Life', 'my-esport-theme'); ?></h2>
-                <p class="section-description"><?php esc_html_e('We create practical and modern clothing designed for everyday wear. Our focus is on high-quality materials and simple designs that fit naturally into your lifestyle.', 'my-esport-theme'); ?></p>
-                <div>
-                    <a href="#about" class="btn btn-secondary"><?php esc_html_e('Learn More', 'my-esport-theme'); ?></a>
+        <section id="about" class="about-section">
+            <div class="container about-inner">
+                <div class="about-image">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1558769132-cb1fac084092?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="<?php esc_attr_e('About our clothing brand', 'my-esport-theme'); ?>">
+                </div>
+                <div class="about-content">
+                    <span class="eyebrow"><?php esc_html_e('ABOUT US', 'my-esport-theme'); ?></span>
+                    <h2 class="section-heading"><?php esc_html_e('Clothing For Everyday Life', 'my-esport-theme'); ?></h2>
+                    <p class="section-description"><?php esc_html_e('We create practical and modern clothing designed for everyday wear. Our focus is on high-quality materials and simple designs that fit naturally into your lifestyle.', 'my-esport-theme'); ?></p>
+                    <div>
+                        <a href="#about" class="btn btn-secondary"><?php esc_html_e('Learn More', 'my-esport-theme'); ?></a>
+                    </div>
                 </div>
             </div>
         </section>

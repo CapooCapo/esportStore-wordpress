@@ -17,14 +17,14 @@ Tags: modern, fashion, e-commerce
     --color-primary-red: #E63946;
     --color-accent-yellow: #F4D35E;
     --color-secondary-blue: #457B9D;
-    
+
     --color-background: #FFFFFF;
     --color-surface: #F8F9FA;
     --color-surface-soft: #F1F3F5;
     --color-text: #1F2937;
     --color-text-muted: #6B7280;
     --color-border: #E5E7EB;
-    
+
     /* Spacing Tokens */
     --space-xs: 8px;
     --space-sm: 12px;
@@ -40,13 +40,23 @@ Tags: modern, fashion, e-commerce
     --radius-md: 12px;
     --radius-lg: 16px;
     --radius-xl: 24px;
-    
-    --font-main: 'Inter', sans-serif;
+    --radius-full: 9999px;
+
+    /* Shadow Tokens */
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
     --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
     --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.12);
 
-    /* Legacy mapping helpers */
+    --font-main: 'Inter', sans-serif;
+
+    /* ------------------------------------------------------------------ */
+    /* Legacy aliases — kept for backward compatibility with older rules.  */
+    /* New CSS MUST use --color-* / --space-* tokens above.               */
+    /* ------------------------------------------------------------------ */
+    --color-primary: #E63946;       /* maps to primary-red */
+    --color-bg: #FFFFFF;             /* maps to background */
+    --color-text-light: #6B7280;    /* maps to text-muted */
+
     --primary-color: #8B1E2D;
     --secondary-color: #FFFFFF;
     --accent-color: #F4D35E;
@@ -57,6 +67,16 @@ Tags: modern, fashion, e-commerce
     --border-color: #E5E7EB;
     --border-radius: 12px;
     --transition: all 0.2s ease;
+
+    /* Spacing aliases — maps old --spacing-* names to new --space-* tokens */
+    --spacing-xs: var(--space-xs);
+    --spacing-sm: var(--space-sm);
+    --spacing-md: var(--space-md);
+    --spacing-lg: var(--space-lg);
+    --spacing-xl: var(--space-xl);
+    --spacing-2xl: var(--space-2xl);
+    --spacing-3xl: var(--space-3xl);
+    --spacing-4xl: var(--space-4xl);
 }
 
 * {
@@ -174,6 +194,7 @@ button {
     color: var(--color-text-muted);
     font-size: 1.125rem;
     max-width: 600px;
+    margin-inline: auto;
     margin-bottom: var(--space-md);
 }
 
@@ -305,11 +326,13 @@ button {
     right: 2px;
     background-color: var(--color-accent-yellow);
     color: var(--color-primary-dark);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 800;
-    padding: 2px 6px;
+    padding: 2px 5px;
     border-radius: 999px;
-    line-height: 1;
+    line-height: 1.2;
+    min-width: 18px;
+    text-align: center;
 }
 
 .language-switcher {
@@ -386,7 +409,14 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 40%, rgba(255,255,255,0) 100%);
+    /* Desktop: LTR gradient — content on left, image visible on right */
+    background: linear-gradient(
+        to right,
+        rgba(255,255,255,0.96) 0%,
+        rgba(255,255,255,0.85) 35%,
+        rgba(255,255,255,0.3) 60%,
+        rgba(255,255,255,0) 100%
+    );
     z-index: 2;
 }
 
@@ -576,8 +606,8 @@ button {
     position: absolute;
     top: var(--space-xs);
     right: var(--space-xs);
-    width: 34px;
-    height: 34px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background-color: #FFFFFF;
     display: flex;
@@ -694,7 +724,7 @@ button {
     border-radius: var(--radius-xl);
     overflow: hidden;
     text-align: center;
-    padding: var(--space-4xl) var(--space-2xl);
+    /* Note: vertical rhythm controlled by global section spacing rule */
 }
 
 .promotion-bg {
@@ -777,6 +807,10 @@ button {
 
 /* About Section */
 .about-section {
+    background-color: var(--color-surface);
+}
+
+.about-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-2xl);
@@ -1012,11 +1046,17 @@ button {
     .hero-section {
         min-height: 60vh;
     }
-    
+
+    /* On mobile the content is centered — use full-coverage overlay */
+    .hero-overlay {
+        background: rgba(255, 255, 255, 0.88);
+    }
+
     .hero-content {
         padding-block: var(--space-2xl);
         text-align: center;
         align-items: center;
+        max-width: 100%;
     }
     
     .collection-inner {
@@ -1029,7 +1069,7 @@ button {
         order: -1;
     }
     
-    .about-section {
+    .about-inner {
         grid-template-columns: 1fr;
     }
     
@@ -1061,20 +1101,28 @@ button {
     }
 }
 
-/* WooCommerce Theme Base Styles */
+/* WooCommerce Theme Base Styles — unified with theme design system */
 .woocommerce button.button,
 .woocommerce button.button.alt,
 .woocommerce a.button,
 .woocommerce a.button.alt,
 .woocommerce input.button,
 .woocommerce input.button.alt {
-    background-color: var(--color-primary);
-    color: var(--color-bg);
-    border-radius: var(--radius-full);
-    padding: 0.8rem 1.5rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary-red);
+    color: #FFFFFF !important;
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1.75rem;
+    min-height: 48px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    font-family: var(--font-main);
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     border: none;
+    cursor: pointer;
+    text-decoration: none;
 }
 .woocommerce button.button:hover,
 .woocommerce button.button.alt:hover,
@@ -1082,32 +1130,58 @@ button {
 .woocommerce a.button.alt:hover,
 .woocommerce input.button:hover,
 .woocommerce input.button.alt:hover {
-    background-color: var(--color-text);
-    color: var(--color-bg);
+    background-color: var(--color-primary-dark);
+    color: #FFFFFF !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }
+.woocommerce button.button:focus-visible,
+.woocommerce a.button:focus-visible,
+.woocommerce input.button:focus-visible {
+    outline: 2px solid var(--color-primary-red);
+    outline-offset: 2px;
+}
+/* WooCommerce form inputs — consistent with theme inputs */
 .woocommerce form .form-row input.input-text,
 .woocommerce form .form-row textarea,
 .woocommerce form .form-row select {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    padding: 0.8rem;
-    font-family: inherit;
+    border-radius: var(--radius-md);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
 }
-.woocommerce-message, .woocommerce-info, .woocommerce-error {
-    border-top-color: var(--color-primary);
+.woocommerce form .form-row input.input-text:focus,
+.woocommerce form .form-row textarea:focus,
+.woocommerce form .form-row select:focus {
+    outline: none;
+    border-color: var(--color-primary-red);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
     background-color: var(--color-surface);
 }
-.woocommerce-message::before, .woocommerce-info::before {
-    color: var(--color-primary);
+/* WooCommerce product price — consistent red primary */
+.woocommerce ul.products li.product .price,
+.woocommerce ul.products li.product .woocommerce-Price-amount {
+    color: var(--color-primary-red);
+    font-weight: 700;
+    font-size: 1.05rem;
 }
-.woocommerce ul.products li.product .price {
-    color: var(--color-text);
-    font-weight: 500;
+.woocommerce ul.products li.product .price del {
+    color: var(--color-text-muted);
+    font-weight: 400;
+    font-size: 0.9rem;
 }
-.woocommerce div.product p.price, .woocommerce div.product span.price {
-    color: var(--color-text);
-    font-size: 1.25rem;
-    font-weight: 600;
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+    color: var(--color-primary-red);
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 /* WooCommerce Single Product Styles */
@@ -1574,28 +1648,27 @@ button {
     text-decoration: underline;
 }
 
-/* Logged-In My Account Dashboard Layout */
+/* Logged-In My Account Dashboard Layout — flexbox replaces float */
+.woocommerce-account .woocommerce {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-xl);
+}
+
 .woocommerce-account .woocommerce-MyAccount-navigation {
-    float: left;
-    width: 260px;
-    margin-right: var(--spacing-xl);
+    flex: 0 0 240px;
+    width: 240px;
 }
 
 .woocommerce-account .woocommerce-MyAccount-content {
-    float: left;
-    width: calc(100% - 260px - var(--spacing-xl));
+    flex: 1;
+    min-width: 0;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
+    padding: var(--space-xl);
     box-shadow: var(--shadow-sm);
     box-sizing: border-box;
-}
-
-.woocommerce-account::after {
-    content: "";
-    display: table;
-    clear: both;
 }
 
 .woocommerce-account .woocommerce-MyAccount-navigation ul {
@@ -1729,15 +1802,19 @@ button {
         box-sizing: border-box;
     }
 
-    .woocommerce-account .woocommerce-MyAccount-navigation,
-    .woocommerce-account .woocommerce-MyAccount-content {
-        float: none;
-        width: 100%;
-        margin-right: 0;
+    /* Flexbox account layout collapses to vertical on mobile */
+    .woocommerce-account .woocommerce {
+        flex-direction: column;
     }
 
     .woocommerce-account .woocommerce-MyAccount-navigation {
-        margin-bottom: var(--spacing-lg);
+        flex: none;
+        width: 100%;
+        margin-bottom: var(--space-lg);
+    }
+
+    .woocommerce-account .woocommerce-MyAccount-content {
+        width: 100%;
     }
 
     .woocommerce-account .woocommerce-Addresses .col-1,
@@ -1893,43 +1970,4 @@ ul.polylang-switcher-custom li.current-lang a {
 .woocommerce div.product form.cart .single_add_to_cart_button {
     flex: 1;
     min-width: 200px;
-}
-
-/* Contact Section */
-.contact-section {
-    padding: var(--spacing-xl) 0;
-    background-color: var(--color-surface);
-    text-align: center;
-}
-
-.contact-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.contact-info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
-}
-
-.contact-info-card {
-    padding: var(--spacing-lg);
-    background-color: var(--color-background);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--color-border);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.contact-info-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-}
-
-.contact-icon {
-    width: 32px;
-    height: 32px;
-    color: var(--color-primary-red);
-    margin-bottom: var(--spacing-sm);
 }
