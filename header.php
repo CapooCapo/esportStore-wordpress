@@ -45,15 +45,10 @@
                             <?php 
                             $languages = pll_the_languages( array( 'raw' => 1 ) );
                             if ( ! empty( $languages ) ) {
-                                $count = count($languages);
-                                $i = 0;
                                 foreach ( $languages as $lang ) {
                                     $active_class = $lang['current_lang'] ? ' active' : '';
-                                    echo '<a href="' . esc_url( $lang['url'] ) . '" class="lang-btn' . esc_attr( $active_class ) . '" lang="' . esc_attr( $lang['locale'] ) . '">' . esc_html( strtoupper( $lang['slug'] ) ) . '</a>';
-                                    $i++;
-                                    if ( $i < $count ) {
-                                        echo '<span class="lang-divider">/</span>';
-                                    }
+                                    $aria_label = sprintf( esc_attr__( 'Switch to %s', 'my-esport-theme' ), $lang['name'] );
+                                    echo '<a href="' . esc_url( $lang['url'] ) . '" class="lang-btn' . esc_attr( $active_class ) . '" lang="' . esc_attr( $lang['locale'] ) . '" aria-label="' . esc_attr( $aria_label ) . '">' . esc_html( strtoupper( $lang['slug'] ) ) . '</a>';
                                 }
                             }
                             ?>

@@ -29,6 +29,11 @@ Tags: modern, fashion, e-commerce
     --color-accent-yellow: #F4D35E;
     --color-secondary-blue: #457B9D;
     
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    
     --font-main: 'Inter', sans-serif;
     
     --spacing-xs: 0.5rem;
@@ -118,7 +123,7 @@ button {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     transition: var(--transition);
 }
 
@@ -210,8 +215,8 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     color: var(--secondary-color);
     transition: var(--transition);
 }
@@ -243,24 +248,39 @@ button {
 .language-switcher {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 500;
 }
 
+.polylang-switcher-custom {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
 .lang-btn {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.65);
+    background-color: transparent;
     transition: var(--transition);
     text-decoration: none;
+    min-height: 44px;
+    padding: 0 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .lang-btn.active {
-    color: var(--color-accent-yellow);
+    color: var(--color-primary-dark);
+    background-color: var(--color-accent-yellow);
     font-weight: 600;
 }
 
-.lang-divider {
-    color: rgba(255, 255, 255, 0.3);
+.lang-btn:hover:not(.active) {
+    color: var(--color-accent-yellow);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .mobile-menu-btn {
@@ -335,6 +355,8 @@ button {
 
 .hero-image {
     position: absolute;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
     top: 0;
     right: 0;
     width: 50%;
@@ -404,7 +426,7 @@ button {
 .category-card {
     position: relative;
     overflow: hidden;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-lg);
     aspect-ratio: 3/4;
     group: category;
 }
@@ -431,7 +453,7 @@ button {
     font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     transition: var(--transition);
 }
 
@@ -483,7 +505,7 @@ button {
     aspect-ratio: 3/4;
     background-color: var(--bg-secondary);
     margin-bottom: var(--spacing-sm);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     overflow: hidden;
 }
 
@@ -573,7 +595,7 @@ button {
     padding: 0.75rem;
     background-color: transparent;
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     font-weight: 500;
     font-size: 0.875rem;
     transition: var(--transition);
@@ -700,7 +722,7 @@ button {
 }
 
 .about-image {
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-lg);
     overflow: hidden;
 }
 
@@ -728,7 +750,7 @@ button {
     flex: 1;
     padding: 1rem;
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     font-family: inherit;
     font-size: 1rem;
 }
@@ -985,7 +1007,7 @@ button {
 
 /* WooCommerce Single Product Styles */
 .woocommerce div.product div.images img {
-    border-radius: var(--border-radius, 8px);
+    border-radius: var(--radius-md);
 }
 
 .woocommerce div.product .product_title {
@@ -1047,7 +1069,7 @@ button {
 /* WooCommerce Cart Styles */
 .woocommerce table.shop_table {
     border: 1px solid var(--color-border);
-    border-radius: var(--border-radius, 8px);
+    border-radius: var(--radius-md);
     border-collapse: collapse;
     width: 100%;
     margin-bottom: var(--spacing-lg);
@@ -1086,7 +1108,7 @@ button {
 .woocommerce .cart-collaterals .cart_totals {
     background: var(--color-surface, #ffffff);
     border: 1px solid var(--color-border);
-    border-radius: var(--border-radius, 8px);
+    border-radius: var(--radius-md);
     padding: var(--spacing-lg);
     width: 100%;
 }
@@ -1134,14 +1156,14 @@ button {
 .woocommerce-checkout #order_review {
     background: var(--color-surface, #ffffff);
     border: 1px solid var(--color-border);
-    border-radius: var(--border-radius, 8px);
+    border-radius: var(--radius-md);
     padding: var(--spacing-lg);
     margin-top: var(--spacing-lg);
 }
 
 .woocommerce-checkout #payment {
     background: var(--bg-secondary, #f8f9fa);
-    border-radius: var(--border-radius, 8px);
+    border-radius: var(--radius-md);
     padding: var(--spacing-md);
     margin-top: var(--spacing-lg);
 }
@@ -1245,7 +1267,7 @@ button {
     margin: 0;
     background: var(--color-surface, #ffffff);
     border: 1px solid var(--color-border);
-    border-radius: var(--border-radius, 8px);
+    border-radius: var(--radius-md);
     overflow: hidden;
 }
 
@@ -1279,7 +1301,7 @@ button {
 .woocommerce-account table.my_account_orders,
 .woocommerce-account table.woocommerce-MyAccount-downloads {
     border: 1px solid var(--color-border);
-    border-radius: var(--border-radius, 8px);
+    border-radius: var(--radius-md);
     border-collapse: collapse;
     width: 100%;
 }
@@ -1301,7 +1323,7 @@ button {
 .woocommerce-account address {
     background: var(--color-surface, #ffffff);
     border: 1px solid var(--color-border);
-    border-radius: var(--border-radius, 8px);
+    border-radius: var(--radius-md);
     padding: var(--spacing-md);
     font-style: normal;
     line-height: 1.6;
@@ -1319,7 +1341,7 @@ button {
     width: 300px;
     background: var(--color-surface, #ffffff);
     border: 1px solid var(--color-border);
-    border-radius: var(--border-radius, 8px);
+    border-radius: var(--radius-md);
     padding: var(--spacing-sm);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     opacity: 0;
