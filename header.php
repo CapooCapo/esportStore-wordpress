@@ -46,6 +46,9 @@
                             $languages = pll_the_languages( array( 'raw' => 1 ) );
                             if ( ! empty( $languages ) ) {
                                 foreach ( $languages as $lang ) {
+                                    if ( strtolower( $lang['slug'] ) === 'en' ) {
+                                        continue;
+                                    }
                                     $active_class = $lang['current_lang'] ? ' active' : '';
                                     $aria_label = sprintf( esc_attr__( 'Switch to %s', 'my-esport-theme' ), $lang['name'] );
                                     echo '<a href="' . esc_url( $lang['url'] ) . '" class="lang-btn' . esc_attr( $active_class ) . '" lang="' . esc_attr( $lang['locale'] ) . '" aria-label="' . esc_attr( $aria_label ) . '">' . esc_html( strtoupper( $lang['slug'] ) ) . '</a>';
@@ -54,9 +57,7 @@
                             ?>
                         </div>
                     <?php else : ?>
-                        <button class="lang-btn active" data-lang="en">EN</button>
-                        <span class="lang-divider">/</span>
-                        <button class="lang-btn" data-lang="vi">VI</button>
+                        <button class="lang-btn active" data-lang="vi">VI</button>
                     <?php endif; ?>
                 </div>
                 <a href="<?php echo function_exists('wc_get_page_permalink') ? esc_url(wc_get_page_permalink('myaccount')) : '#account'; ?>" class="action-btn account-btn" aria-label="<?php esc_attr_e('Account', 'my-esport-theme'); ?>">
