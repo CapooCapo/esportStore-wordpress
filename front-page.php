@@ -21,22 +21,32 @@
             <div class="container">
                 <h2 class="section-heading"><?php esc_html_e('Shop By Category', 'my-esport-theme'); ?></h2>
                 <div class="category-grid">
-                    <a href="#t-shirts" class="category-card">
-                        <img loading="lazy" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="T-Shirts Category">
-                        <span class="category-name"><?php esc_html_e('T-Shirts', 'my-esport-theme'); ?></span>
-                    </a>
-                    <a href="#shirts" class="category-card">
-                        <img loading="lazy" src="https://images.unsplash.com/photo-1596755094514-f87e32f85e2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Shirts Category">
-                        <span class="category-name"><?php esc_html_e('Shirts', 'my-esport-theme'); ?></span>
-                    </a>
-                    <a href="#pants" class="category-card">
-                        <img loading="lazy" src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pants Category">
-                        <span class="category-name"><?php esc_html_e('Pants', 'my-esport-theme'); ?></span>
-                    </a>
-                    <a href="#jackets" class="category-card">
-                        <img loading="lazy" src="https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Jackets Category">
-                        <span class="category-name"><?php esc_html_e('Jackets', 'my-esport-theme'); ?></span>
-                    </a>
+                    <?php
+                    if ( class_exists( 'WooCommerce' ) ) {
+                        $args = array(
+                            'taxonomy'   => 'product_cat',
+                            'hide_empty' => false,
+                            'number'     => 4
+                        );
+                        $product_categories = get_terms( $args );
+                        if ( ! empty( $product_categories ) && ! is_wp_error( $product_categories ) ) {
+                            foreach ( $product_categories as $category ) {
+                                $thumbnail_id = get_term_meta( $category->term_id, 'thumbnail_id', true );
+                                $image_url = $thumbnail_id ? wp_get_attachment_url( $thumbnail_id ) : wc_placeholder_img_src();
+                                ?>
+                                <a href="<?php echo esc_url( get_term_link( $category ) ); ?>" class="category-card">
+                                    <img loading="lazy" src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $category->name ); ?>">
+                                    <span class="category-name"><?php echo esc_html( $category->name ); ?></span>
+                                </a>
+                                <?php
+                            }
+                        } else {
+                            echo '<p>' . esc_html__( 'No categories found.', 'my-esport-theme' ) . '</p>';
+                        }
+                    } else {
+                        echo '<p>' . esc_html__( 'WooCommerce is not active.', 'my-esport-theme' ) . '</p>';
+                    }
+                    ?>
                 </div>
             </div>
         </section>
@@ -50,7 +60,7 @@
                     <p class="section-description">Explore our latest clothing collection.</p>
                 </div>
                 
-                <div class="product-grid">
+                <ul class="product-grid products">
                     <?php
                     if ( class_exists( 'WooCommerce' ) ) {
                         $args = array(
@@ -61,36 +71,7 @@
                         $loop = new WP_Query( $args );
                         if ( $loop->have_posts() ) {
                             while ( $loop->have_posts() ) : $loop->the_post();
-                                global $product;
-                                ?>
-                                <div class="product-card">
-                                    <div class="product-image-wrap">
-                                        <?php if ( $product->is_on_sale() ) : ?>
-                                            <span class="product-badge"><?php esc_html_e('SALE', 'my-esport-theme'); ?></span>
-                                        <?php elseif ( ( time() - strtotime( get_the_date('Y-m-d') ) ) < ( 30 * 24 * 60 * 60 ) ) : ?>
-                                            <span class="product-badge"><?php esc_html_e('NEW', 'my-esport-theme'); ?></span>
-                                        <?php endif; ?>
-                                        <button class="wishlist-btn" aria-label="<?php esc_attr_e('Add to Wishlist', 'my-esport-theme'); ?>">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                                        </button>
-                                        <a href="<?php the_permalink(); ?>">
-                                            <?php 
-                                            if ( has_post_thumbnail() ) {
-                                                the_post_thumbnail( 'woocommerce_thumbnail', array( 'loading' => 'lazy' ) );
-                                            } else {
-                                                echo '<img src="' . esc_url( wc_placeholder_img_src() ) . '" alt="' . esc_attr__( 'Placeholder', 'my-esport-theme' ) . '" loading="lazy" />';
-                                            }
-                                            ?>
-                                        </a>
-                                    </div>
-                                    <span class="product-category"><?php echo wc_get_product_category_list( $product->get_id(), ', ' ); ?></span>
-                                    <a href="<?php the_permalink(); ?>"><h3 class="product-name"><?php the_title(); ?></h3></a>
-                                    <div class="product-price-wrap">
-                                        <?php echo $product->get_price_html(); ?>
-                                    </div>
-                                    <a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" data-product_id="<?php echo esc_attr( $product->get_id() ); ?>" class="add-to-cart-btn ajax_add_to_cart" rel="nofollow"><?php echo esc_html( $product->add_to_cart_text() ); ?></a>
-                                </div>
-                                <?php
+                                wc_get_template_part( 'content', 'product' );
                             endwhile;
                         } else {
                             echo '<p>' . esc_html__( 'No products found', 'my-esport-theme' ) . '</p>';
@@ -100,7 +81,7 @@
                         echo '<p>' . esc_html__( 'WooCommerce is not active.', 'my-esport-theme' ) . '</p>';
                     }
                     ?>
-                </div>
+                </ul>
                 
                 <div class="center-action">
                     <a href="#shop" class="btn btn-secondary">View All Products</a>
@@ -191,5 +172,28 @@
                 </form>
             </div>
         </section>
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <span class="eyebrow"><?php esc_html_e('GET IN TOUCH', 'my-esport-theme'); ?></span>
+                    <h2 class="section-heading"><?php esc_html_e('Contact Us', 'my-esport-theme'); ?></h2>
+                    <p class="section-description"><?php esc_html_e('Have questions about our products or your order? We are here to help.', 'my-esport-theme'); ?></p>
+                    <div class="contact-info-grid">
+                        <div class="contact-info-card">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <h3><?php esc_html_e('Email', 'my-esport-theme'); ?></h3>
+                            <p>support@esportstore.com</p>
+                        </div>
+                        <div class="contact-info-card">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <h3><?php esc_html_e('Phone', 'my-esport-theme'); ?></h3>
+                            <p>+1 (800) 123-4567</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 <?php get_footer(); ?>
