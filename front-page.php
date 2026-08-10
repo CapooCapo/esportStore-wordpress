@@ -116,7 +116,8 @@
                 </div>
                 <div class="collection-image">
                     <img loading="lazy"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdwAmVNnJPBkaJ1X0IMtJOv9NmMK-ey9r5PWqhO_7SPRpAV6ogM-TMHeY_&s=10'); ?>">
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdwAmVNnJPBkaJ1X0IMtJOv9NmMK-ey9r5PWqhO_7SPRpAV6ogM-TMHeY_&s=10"
+                        alt="<?php esc_attr_e('Everyday essentials collection', 'my-esport-theme'); ?>">
                 </div>
             </div>
         </div>
@@ -125,7 +126,7 @@
     <!-- Promotion Section -->
     <section id="promotion" class="promotion-section">
         <img loading="lazy"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcayUk6h4yMC9xfmqGcU3ZX4shrQPUsTVXpD6y-Ym04A&s=10"
+            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
             alt="<?php esc_attr_e('Fashion promotion', 'my-esport-theme'); ?>" class="promotion-bg">
         <div class="promotion-overlay"></div>
         <div class="container">
