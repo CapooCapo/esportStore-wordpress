@@ -52,20 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Language Switcher
-    const langBtns = document.querySelectorAll('.lang-btn');
-    
-    langBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all
-            langBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked
-            btn.classList.add('active');
-            
-            // Here you would typically trigger the translation or redirect
-            // Example: window.location.href = '?lang=' + btn.dataset.lang;
-        });
-    });
+    // Language Switcher handled by Polylang PHP directly
 
     // Smooth Scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

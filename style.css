@@ -123,9 +123,9 @@ button {
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
+    background-color: var(--color-primary-red);
     color: var(--secondary-color);
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--color-primary-red);
 }
 
 .btn-primary:hover {
@@ -135,8 +135,8 @@ button {
 
 .btn-secondary {
     background-color: transparent;
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
+    color: var(--color-secondary-blue);
+    border: 1px solid var(--color-secondary-blue);
 }
 
 .btn-secondary:hover {
@@ -160,8 +160,9 @@ button {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background-color: var(--color-primary-dark);
+    color: var(--secondary-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -178,6 +179,11 @@ button {
     letter-spacing: -0.02em;
 }
 
+.logo a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
 .main-nav .nav-list {
     display: flex;
     gap: var(--spacing-md);
@@ -186,12 +192,12 @@ button {
 .main-nav .nav-list a {
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--text-muted);
+    color: var(--secondary-color);
     transition: var(--transition);
 }
 
 .main-nav .nav-list a:hover {
-    color: var(--primary-color);
+    color: var(--color-accent-yellow);
 }
 
 .header-actions {
@@ -206,12 +212,12 @@ button {
     justify-content: center;
     width: 40px;
     height: 40px;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     transition: var(--transition);
 }
 
 .action-btn:hover {
-    color: var(--accent-color);
+    color: var(--color-accent-yellow);
 }
 
 .cart-btn {
@@ -243,17 +249,18 @@ button {
 }
 
 .lang-btn {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.6);
     transition: var(--transition);
+    text-decoration: none;
 }
 
 .lang-btn.active {
-    color: var(--primary-color);
+    color: var(--color-accent-yellow);
     font-weight: 600;
 }
 
 .lang-divider {
-    color: var(--border-color);
+    color: rgba(255, 255, 255, 0.3);
 }
 
 .mobile-menu-btn {
@@ -380,7 +387,7 @@ button {
 /* Category Section */
 .category-section {
     padding: var(--spacing-xl) 0;
-    background-color: var(--bg-secondary);
+    background-color: var(--color-primary-dark);
 }
 
 .category-section .container {
@@ -733,7 +740,7 @@ button {
 
 /* Footer */
 .site-footer {
-    background-color: var(--primary-color);
+    background-color: var(--color-primary-dark);
     color: var(--secondary-color);
     padding: var(--spacing-xl) 0 var(--spacing-md);
 }
