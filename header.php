@@ -60,10 +60,28 @@
                         <button class="lang-btn active" data-lang="vi">VI</button>
                     <?php endif; ?>
                 </div>
-                <a href="<?php echo function_exists('wc_get_page_permalink') ? esc_url(wc_get_page_permalink('myaccount')) : '#account'; ?>" class="action-btn account-btn" aria-label="<?php esc_attr_e('Account', 'my-esport-theme'); ?>">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    <span class="account-text"><?php esc_html_e('Login / Register', 'my-esport-theme'); ?></span>
-                </a>
+                <?php
+                $myaccount_url = function_exists('wc_get_page_permalink') ? wc_get_page_permalink('myaccount') : '#account';
+                if ( is_user_logged_in() ) :
+                    $current_user = wp_get_current_user();
+                    $logout_url = wp_logout_url( $myaccount_url );
+                ?>
+                    <div class="account-menu-wrapper" style="position: relative;">
+                        <a href="<?php echo esc_url($myaccount_url); ?>" class="action-btn account-btn" aria-label="<?php esc_attr_e('Account', 'my-esport-theme'); ?>">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            <span class="account-text"><?php echo esc_html($current_user->display_name); ?></span>
+                        </a>
+                        <div class="account-dropdown">
+                            <a href="<?php echo esc_url($myaccount_url); ?>"><?php esc_html_e('My Account', 'my-esport-theme'); ?></a>
+                            <a href="<?php echo esc_url($logout_url); ?>"><?php esc_html_e('Logout', 'my-esport-theme'); ?></a>
+                        </div>
+                    </div>
+                <?php else : ?>
+                    <a href="<?php echo esc_url($myaccount_url); ?>" class="action-btn account-btn" aria-label="<?php esc_attr_e('Account', 'my-esport-theme'); ?>">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span class="account-text"><?php esc_html_e('Login', 'my-esport-theme'); ?> <span style="margin: 0 4px; opacity: 0.5;">|</span> <?php esc_html_e('Register', 'my-esport-theme'); ?></span>
+                    </a>
+                <?php endif; ?>
                 <a href="<?php echo function_exists('wc_get_cart_url') ? esc_url(wc_get_cart_url()) : '#cart'; ?>" class="action-btn cart-btn" aria-label="<?php esc_attr_e('Cart', 'my-esport-theme'); ?>">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                     <span class="cart-count"><?php echo function_exists('WC') && WC()->cart ? esc_html(WC()->cart->get_cart_contents_count()) : '0'; ?></span>

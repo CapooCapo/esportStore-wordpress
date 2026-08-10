@@ -319,6 +319,49 @@ button {
     white-space: nowrap;
 }
 
+.account-menu-wrapper {
+    position: relative;
+    display: inline-flex;
+}
+
+.account-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-xs) 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    z-index: 100;
+}
+
+.account-menu-wrapper:hover .account-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.account-dropdown a {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    text-decoration: none;
+}
+
+.account-dropdown a:hover {
+    background-color: var(--color-surface);
+    color: var(--color-primary-red);
+}
+
 .cart-btn {
     position: relative;
 }
