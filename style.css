@@ -1216,3 +1216,152 @@ button {
     font-style: normal;
     line-height: 1.6;
 }
+
+/* Core Search UI */
+.header-actions {
+    position: relative;
+}
+
+.header-search-container {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius, 8px);
+    padding: var(--spacing-sm);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+@media (max-width: 767px) {
+    .header-search-container {
+        width: 250px;
+        right: -50px;
+    }
+}
+
+.header-search-container.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.header-search-form {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.header-search-form .search-field {
+    flex: 1;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm, 4px);
+    padding: 0.5rem 0.8rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.header-search-form .search-submit {
+    background: var(--color-primary);
+    color: var(--color-bg, #ffffff);
+    border: none;
+    border-radius: var(--radius-sm, 4px);
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.header-search-form .search-submit:hover {
+    background: var(--color-text, #000000);
+}
+
+/* Polylang Switcher */
+ul.polylang-switcher-custom {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+ul.polylang-switcher-custom li a {
+    color: var(--text-muted, #666666);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+ul.polylang-switcher-custom li a:hover {
+    color: var(--color-primary);
+}
+
+ul.polylang-switcher-custom li.current-lang a {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* Variable Products (UI/UX enhancement) */
+.woocommerce div.product form.cart .variations {
+    margin-bottom: var(--spacing-lg);
+    width: 100%;
+}
+
+.woocommerce div.product form.cart .variations th,
+.woocommerce div.product form.cart .variations td {
+    padding-bottom: var(--spacing-md);
+    vertical-align: middle;
+}
+
+.woocommerce div.product form.cart .variations th {
+    text-align: left;
+    width: 30%;
+    font-weight: 600;
+}
+
+.woocommerce div.product form.cart .variations select {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm, 4px);
+    padding: 0.8rem;
+    font-family: inherit;
+    cursor: pointer;
+    background-color: var(--color-surface, #ffffff);
+}
+
+.woocommerce div.product form.cart .reset_variations {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: underline;
+}
+
+.woocommerce div.product form.cart .single_variation_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.woocommerce div.product form.cart .quantity {
+    margin: 0;
+}
+
+.woocommerce div.product form.cart .single_add_to_cart_button {
+    flex: 1;
+    min-width: 200px;
+}

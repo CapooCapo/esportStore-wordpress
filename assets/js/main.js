@@ -28,6 +28,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Search Toggle
+    const searchToggle = document.getElementById('header-search-toggle');
+    const searchContainer = document.getElementById('header-search-container');
+    
+    if (searchToggle && searchContainer) {
+        searchToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            searchContainer.classList.toggle('active');
+            if (searchContainer.classList.contains('active')) {
+                const searchInput = searchContainer.querySelector('.search-field');
+                if (searchInput) {
+                    setTimeout(() => searchInput.focus(), 100);
+                }
+            }
+        });
+
+        // Close search when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchContainer.contains(e.target) && !searchToggle.contains(e.target) && searchContainer.classList.contains('active')) {
+                searchContainer.classList.remove('active');
+            }
+        });
+    }
+
     // Language Switcher
     const langBtns = document.querySelectorAll('.lang-btn');
     
