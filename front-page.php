@@ -125,7 +125,7 @@
     <!-- Promotion Section -->
     <section id="promotion" class="promotion-section">
         <img loading="lazy"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXpUXP2lNgzD8c6Ym8HAFOy9_Pcv43yOTCwZuPSsPsug&s=10"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcayUk6h4yMC9xfmqGcU3ZX4shrQPUsTVXpD6y-Ym04A&s=10"
             alt="<?php esc_attr_e('Fashion promotion', 'my-esport-theme'); ?>" class="promotion-bg">
         <div class="promotion-overlay"></div>
         <div class="container">
