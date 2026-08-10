@@ -44,7 +44,6 @@ add_action('woocommerce_after_main_content', 'my_esport_theme_wrapper_end', 10);
 function my_esport_theme_wrapper_end() {
     echo '</div></section></main>';
 }
-}
 
 // Add Register UI to WooCommerce Login form
 add_action('woocommerce_login_form_end', 'my_esport_theme_add_register_to_login');
