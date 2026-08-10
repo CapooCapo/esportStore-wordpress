@@ -41,12 +41,23 @@
                 </div>
                 <div class="language-switcher">
                     <?php if ( function_exists( 'pll_the_languages' ) ) : ?>
-                        <ul class="polylang-switcher-custom">
+                        <div class="polylang-switcher-custom">
                             <?php 
-                            $args = array( 'show_flags' => 0, 'show_names' => 1, 'hide_current' => 0 );
-                            pll_the_languages( $args ); 
+                            $languages = pll_the_languages( array( 'raw' => 1 ) );
+                            if ( ! empty( $languages ) ) {
+                                $count = count($languages);
+                                $i = 0;
+                                foreach ( $languages as $lang ) {
+                                    $active_class = $lang['current_lang'] ? ' active' : '';
+                                    echo '<a href="' . esc_url( $lang['url'] ) . '" class="lang-btn' . esc_attr( $active_class ) . '" lang="' . esc_attr( $lang['locale'] ) . '">' . esc_html( strtoupper( $lang['slug'] ) ) . '</a>';
+                                    $i++;
+                                    if ( $i < $count ) {
+                                        echo '<span class="lang-divider">/</span>';
+                                    }
+                                }
+                            }
                             ?>
-                        </ul>
+                        </div>
                     <?php else : ?>
                         <button class="lang-btn active" data-lang="en">EN</button>
                         <span class="lang-divider">/</span>
