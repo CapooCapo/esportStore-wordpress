@@ -2,17 +2,20 @@
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero-section">
-            <div class="hero-content">
-                <span class="eyebrow"><?php esc_html_e('NEW COLLECTION', 'my-esport-theme'); ?></span>
-                <h1 class="hero-heading"><?php esc_html_e('Style Made For Everyday', 'my-esport-theme'); ?></h1>
-                <p class="section-description"><?php esc_html_e('Modern clothing designed for everyday comfort and style.', 'my-esport-theme'); ?></p>
-                <div class="hero-actions">
-                    <a href="<?php echo function_exists('wc_get_page_permalink') ? esc_url(wc_get_page_permalink('shop')) : esc_url(home_url('/shop')); ?>" class="btn btn-primary"><?php esc_html_e('Shop Now', 'my-esport-theme'); ?></a>
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>#collection" class="btn btn-secondary"><?php esc_html_e('View Collection', 'my-esport-theme'); ?></a>
-                </div>
-            </div>
-            <div class="hero-image">
+            <div class="hero-background">
                 <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Fashion model wearing modern clothing">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="container hero-content-container">
+                <div class="hero-content">
+                    <span class="eyebrow"><?php esc_html_e('NEW COLLECTION', 'my-esport-theme'); ?></span>
+                    <h1 class="hero-heading"><?php esc_html_e('Style Made For Everyday', 'my-esport-theme'); ?></h1>
+                    <p class="section-description"><?php esc_html_e('Modern clothing designed for everyday comfort and style.', 'my-esport-theme'); ?></p>
+                    <div class="hero-actions">
+                        <a href="<?php echo function_exists('wc_get_page_permalink') ? esc_url(wc_get_page_permalink('shop')) : esc_url(home_url('/shop')); ?>" class="btn btn-primary"><?php esc_html_e('Shop Now', 'my-esport-theme'); ?></a>
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>#collection" class="btn btn-secondary"><?php esc_html_e('View Collection', 'my-esport-theme'); ?></a>
+                    </div>
+                </div>
             </div>
         </section>
 
