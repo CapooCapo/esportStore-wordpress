@@ -6,6 +6,12 @@ function my_esport_theme_setup() {
     add_theme_support( 'wc-product-gallery-zoom' );
     add_theme_support( 'wc-product-gallery-lightbox' );
     add_theme_support( 'wc-product-gallery-slider' );
+    
+    register_nav_menus(
+        array(
+            'primary' => __('Primary Menu', 'my-esport-theme'),
+        )
+    );
 }
 add_action( 'after_setup_theme', 'my_esport_theme_setup' );
 
@@ -106,4 +112,31 @@ function my_esport_theme_shop_header() {
         echo '<p class="section-description">' . esc_html__( 'Explore football and basketball jerseys, training wear, sports shorts, and selected accessories for training, competition, and everyday sports use.', 'my-esport-theme' ) . '</p>';
         echo '</header>';
     }
+}
+
+// Route core pages to their respective hardcoded templates to bypass missing page.php and manual template assignments
+add_filter( 'template_include', 'my_esport_theme_core_page_routing', 99 );
+function my_esport_theme_core_page_routing( $template ) {
+    if ( is_page( array( 'about', 'gioi-thieu' ) ) ) {
+        $new_template = locate_template( array( 'page-about.php' ) );
+        if ( ! empty( $new_template ) ) {
+            return $new_template;
+        }
+    }
+    
+    if ( is_page( array( 'contact', 'lien-he' ) ) ) {
+        $new_template = locate_template( array( 'page-contact.php' ) );
+        if ( ! empty( $new_template ) ) {
+            return $new_template;
+        }
+    }
+    
+    if ( is_page( array( 'collections', 'collection', 'bo-suu-tap' ) ) ) {
+        $new_template = locate_template( array( 'page-collections.php' ) );
+        if ( ! empty( $new_template ) ) {
+            return $new_template;
+        }
+    }
+
+    return $template;
 }

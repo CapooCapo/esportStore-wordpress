@@ -742,6 +742,7 @@ button {
     -webkit-box-orient: vertical;
     overflow: hidden;
     line-height: 1.3;
+    min-height: calc(1.05rem * 1.3 * 2);
 }
 
 .product-price-wrap {

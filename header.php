@@ -17,13 +17,14 @@
             </div>
             
             <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
-                <ul class="nav-list">
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e('Home', 'my-esport-theme'); ?></a></li>
-                    <li><a href="<?php echo function_exists('wc_get_page_permalink') ? esc_url(wc_get_page_permalink('shop')) : esc_url(home_url('/shop')); ?>"><?php esc_html_e('Shop', 'my-esport-theme'); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/collections/' ) ); ?>"><?php esc_html_e('Collections', 'my-esport-theme'); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e('About Us', 'my-esport-theme'); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e('Contact', 'my-esport-theme'); ?></a></li>
-                </ul>
+                <?php
+                wp_nav_menu( array(
+                    'theme_location' => 'primary',
+                    'container'      => false,
+                    'menu_class'     => 'nav-list',
+                    'fallback_cb'    => false,
+                ) );
+                ?>
             </nav>
 
             <div class="header-actions">
@@ -46,9 +47,6 @@
                             $languages = pll_the_languages( array( 'raw' => 1 ) );
                             if ( ! empty( $languages ) ) {
                                 foreach ( $languages as $lang ) {
-                                    if ( strtolower( $lang['slug'] ) === 'en' ) {
-                                        continue;
-                                    }
                                     $active_class = $lang['current_lang'] ? ' active' : '';
                                     $aria_label = sprintf( esc_attr__( 'Switch to %s', 'my-esport-theme' ), $lang['name'] );
                                     echo '<a href="' . esc_url( $lang['url'] ) . '" class="lang-btn' . esc_attr( $active_class ) . '" lang="' . esc_attr( $lang['locale'] ) . '" aria-label="' . esc_attr( $aria_label ) . '">' . esc_html( strtoupper( $lang['slug'] ) ) . '</a>';
@@ -56,8 +54,6 @@
                             }
                             ?>
                         </div>
-                    <?php else : ?>
-                        <button class="lang-btn active" data-lang="vi">VI</button>
                     <?php endif; ?>
                 </div>
                 <?php
