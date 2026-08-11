@@ -670,6 +670,12 @@ button {
     overflow: hidden;
 }
 
+.product-image-wrap a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 .product-image-wrap img {
     width: 100%;
     height: 100%;
@@ -730,6 +736,11 @@ button {
     font-size: 0.8rem;
     color: var(--color-text-muted);
     margin-bottom: 0.25rem;
+}
+
+.product-info > a {
+    display: block;
+    text-decoration: none;
 }
 
 .product-name {
@@ -1083,7 +1094,7 @@ button {
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
     .hero-heading {
         font-size: 3rem;
     }
@@ -1177,7 +1188,7 @@ button {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 767px) {
     .hero-heading {
         font-size: 2.5rem;
     }
@@ -2096,4 +2107,24 @@ ul.polylang-switcher-custom li.current-lang a {
     flex: 1;
     min-width: 200px;
     margin-top: 0;
+}
+
+/* Override WooCommerce default floats/margins for grid */
+.woocommerce ul.products::before,
+.woocommerce ul.products::after {
+    display: none !important;
+}
+
+.woocommerce ul.products li.first,
+.woocommerce-page ul.products li.first {
+    clear: none !important;
+}
+
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product,
+.woocommerce .related ul.products li.product,
+.woocommerce .up-sells ul.products li.product {
+    width: 100% !important;
+    margin: 0 !important;
+    float: none !important;
 }

@@ -48,7 +48,7 @@ get_header(); ?>
         <div class="container about-inner">
             <div class="about-image">
                 <img loading="lazy"
-                    src="https://images.unsplash.com/photo-1526506114631-f5b27341d75c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/our_focus_sportswear.png"
                     alt="<?php esc_attr_e('Our Focus', 'my-esport-theme'); ?>">
             </div>
             <div class="about-content">

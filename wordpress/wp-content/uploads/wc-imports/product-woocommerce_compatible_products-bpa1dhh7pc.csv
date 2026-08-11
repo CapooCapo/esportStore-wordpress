@@ -1,0 +1,21 @@
+Type,SKU,Name,Published,Is featured?,Visibility in catalog,Short description,Description,In stock?,Stock,Regular price,Categories,Attribute 1 name,Attribute 1 value(s),Attribute 1 visible,Attribute 1 global
+simple,SP001,Official Football Jersey,1,0,visible,,100% breathable polyester with fast sweat-wicking technology and athletic fit for optimal mobility.,1.0,,250000,Apparel,Unit,Piece,1,1
+simple,SP002,Soccer Shorts,1,0,visible,,"Elastic waistband with drawstring, lightweight fabric, and side slits to support full leg range of motion.",1.0,,120000,Apparel,Unit,Piece,1,1
+simple,SP003,High Knee Soccer Socks,1,0,visible,,"Over-the-knee design to hold shin guards in place, featuring anti-slip cushioning on the sole.",1.0,,50000,Apparel,Unit,Pair,1,1
+simple,SP004,Goalkeeper Padded Uniform Set,1,0,visible,,Integrated foam padding at elbows and hips to protect the goalkeeper during dives and saves.,1.0,,350000,Apparel,Unit,Set,1,1
+simple,SP005,Training Pinnies / Scrimmage Vests,1,0,visible,,High-visibility mesh vests used to differentiate teams during internal training sessions.,1.0,,35000,Apparel,Unit,Piece,1,1
+simple,SP006,Turf Soccer Shoes (TF),1,0,visible,,Distributed rubber studs providing excellent traction on artificial turf and reducing knee strain.,1.0,,650000,Footwear & Protection,Unit,Pair,1,1
+simple,SP007,Firm Ground Soccer Cleats (FG),1,0,visible,,Molded plastic studs offering optimal grip and acceleration on standard natural grass pitches.,1.0,,1200000,Footwear & Protection,Unit,Pair,1,1
+simple,SP008,Shin Guards,1,0,visible,,Impact-resistant hard shell with internal EVA foam padding to absorb direct impacts to the shin.,1.0,,90000,Footwear & Protection,Unit,Set,1,1
+simple,SP009,Goalkeeper Gloves,1,0,visible,,"High-grip latex palm for ball control, featuring finger-spine support to prevent hyperextension.",,,450000,Footwear & Protection,Unit,Pair,1,1
+simple,SP010,Athletic Rigid / Cohesive Tape,1,0,visible,,"Elastic strapping tape for ankle and wrist support, as well as securing shin guards in place.",,,25000,Footwear & Protection,Unit,Roll,1,1
+simple,SP011,Standard Size 5 Match Ball,1,0,visible,,"Official size for adult matchplay, waterproof PU casing with consistent rebound and flight trajectory.",,,450000,Training Equipment,Unit,Item,1,1
+simple,SP012,Hand Ball Pump with Needle,1,0,visible,,"Compact design including standard inflation needles, convenient for carrying in gear bags.",,,60000,Training Equipment,Unit,Piece,1,1
+simple,SP013,Training Marker Cones,1,0,visible,,"Set of flexible, durable plastic marker cones in bright colors for agility drills and field marking.",,,90000,Training Equipment,Unit,Set,1,1
+simple,SP014,Agility Speed Ladder,1,0,visible,,"4-6m adjustable ladder designed for footwork, quickness, and coordination drills.",,,130000,Training Equipment,Unit,Piece,1,1
+simple,SP015,Portable Pop-Up Soccer Goal,1,0,visible,,"Foldable steel/fiberglass frame with net, quick to set up for personal practice or small-sided games.",,,550000,Training Equipment,Unit,Piece,1,1
+simple,SP016,Sports Equipment Duffle / Backpack,1,0,visible,,Water-resistant fabric featuring a dedicated shoe compartment and mesh ball carrier.,,,280000,Accessories & Logistics,Unit,Piece,1,1
+simple,SP017,Large Capacity Sports Water Bottle,1,0,visible,,1L-2L BPA-free plastic bottle with an easy-sip nozzle for fast hydration during breaks.,,,85000,Accessories & Logistics,Unit,Piece,1,1
+simple,SP018,Captain Armband,1,0,visible,,Elastic strap with hook-and-loop closure in vibrant colors to identify the team captain.,,,25000,Accessories & Logistics,Unit,Piece,1,1
+simple,SP019,Magnetic Tactical Coaching Board,1,0,visible,,Dry-erase magnetic board with marker and piece set for tactical positioning and match instruction.,,,180000,Accessories & Logistics,Unit,Set,1,1
+simple,SP020,Team Ball Mesh Carrier Bag,1,0,visible,,Heavy-duty nylon mesh bag holding 10-15 balls for easy transport to and from training grounds.,,,110000,Accessories & Logistics,Unit,Piece,1,1

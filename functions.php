@@ -91,6 +91,8 @@ function my_esport_theme_force_english_woo_strings( $translated_text, $text, $do
                 return 'Description';
             case 'Reviews (%s)':
                 return 'Reviews (%s)';
+            case 'Reviews (%d)':
+                return 'Reviews (%d)';
             case 'Reviews':
                 return 'Reviews';
             case 'Additional information':
@@ -100,6 +102,24 @@ function my_esport_theme_force_english_woo_strings( $translated_text, $text, $do
         }
     }
     return $translated_text;
+}
+
+add_filter( 'ngettext', 'my_esport_theme_force_english_woo_ngettext', 99, 5 );
+function my_esport_theme_force_english_woo_ngettext( $translation, $single, $plural, $number, $domain ) {
+    if ( $domain === 'woocommerce' ) {
+        if ( $single === '%s review' && $plural === '%s reviews' ) {
+            return $number === 1 ? '%s review' : '%s reviews';
+        }
+    }
+    return $translation;
+}
+
+// Configure WooCommerce Related Products layout
+add_filter( 'woocommerce_output_related_products_args', 'my_esport_theme_related_products_args', 99 );
+function my_esport_theme_related_products_args( $args ) {
+    $args['posts_per_page'] = 4; // 4 related products
+    $args['columns'] = 4; // arranged in 4 columns
+    return $args;
 }
 
 // Add custom Hero to the Shop page archive
@@ -139,4 +159,15 @@ function my_esport_theme_core_page_routing( $template ) {
     }
 
     return $template;
+}
+
+// Default menu fallback
+function my_esport_theme_default_menu() {
+    echo '<ul class="nav-list">';
+    echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__('Home', 'my-esport-theme') . '</a></li>';
+    echo '<li><a href="' . (function_exists('wc_get_page_permalink') ? esc_url(wc_get_page_permalink('shop')) : esc_url(home_url('/shop'))) . '">' . esc_html__('Shop', 'my-esport-theme') . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/collections/' ) ) . '">' . esc_html__('Collections', 'my-esport-theme') . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/about/' ) ) . '">' . esc_html__('About Us', 'my-esport-theme') . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/contact/' ) ) . '">' . esc_html__('Contact', 'my-esport-theme') . '</a></li>';
+    echo '</ul>';
 }
