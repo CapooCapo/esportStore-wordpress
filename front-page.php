@@ -241,6 +241,77 @@
         </div>
     </section>
 
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container about-inner">
+            <div class="about-image">
+                <img loading="lazy"
+                    src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                    alt="<?php esc_attr_e('Giới thiệu thương hiệu thể thao', 'my-esport-theme'); ?>">
+            </div>
+            <div class="about-content">
+                <span class="eyebrow"><?php esc_html_e('VỀ CHÚNG TÔI', 'my-esport-theme'); ?></span>
+                <h2 class="section-heading"><?php esc_html_e('Giới thiệu thương hiệu', 'my-esport-theme'); ?></h2>
+                <p class="section-description" style="text-align: left;">
+                    <?php esc_html_e('Chúng tôi chuyên cung cấp áo bóng đá, áo bóng rổ và trang phục dành cho người yêu thể thao. Với phong cách thiết kế trẻ trung và năng động, sản phẩm của chúng tôi luôn mang lại cảm giác thoải mái trên sân tập cũng như dạo phố. Trải nghiệm mua sắm tại cửa hàng được tối ưu đơn giản, giúp bạn nhanh chóng chọn được bộ đồ ưng ý cho mọi hoạt động.', 'my-esport-theme'); ?>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <span class="eyebrow"><?php esc_html_e('KẾT NỐI VỚI CHÚNG TÔI', 'my-esport-theme'); ?></span>
+                <h2 class="section-heading"><?php esc_html_e('Liên hệ với chúng tôi', 'my-esport-theme'); ?></h2>
+                <p class="section-description">
+                    <?php esc_html_e('Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn trong suốt quá trình mua sắm và sử dụng sản phẩm.', 'my-esport-theme'); ?>
+                </p>
+            </div>
+            <div class="contact-info-grid">
+                <div class="contact-info-card">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <h3 class="benefit-title" style="margin-bottom: var(--space-sm); font-size: 1.1rem;"><?php esc_html_e('Hỗ trợ đơn hàng', 'my-esport-theme'); ?></h3>
+                    <ul style="color: var(--color-text-muted); text-align: left; list-style-type: none; padding-bottom: var(--space-xs); font-size: 0.95rem; line-height: 1.8;">
+                        <li>• <?php esc_html_e('Hỏi về trạng thái đơn hàng', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Thông tin sản phẩm', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Thắc mắc giao nhận', 'my-esport-theme'); ?></li>
+                    </ul>
+                </div>
+                <div class="contact-info-card">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <h3 class="benefit-title" style="margin-bottom: var(--space-sm); font-size: 1.1rem;"><?php esc_html_e('Hợp tác kinh doanh', 'my-esport-theme'); ?></h3>
+                    <ul style="color: var(--color-text-muted); text-align: left; list-style-type: none; padding-bottom: var(--space-xs); font-size: 0.95rem; line-height: 1.8;">
+                        <li>• <?php esc_html_e('Hợp tác bán hàng', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Đặt áo cho đội bóng', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Đối tác kinh doanh', 'my-esport-theme'); ?></li>
+                    </ul>
+                </div>
+                <div class="contact-info-card">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
+                    <h3 class="benefit-title" style="margin-bottom: var(--space-sm); font-size: 1.1rem;"><?php esc_html_e('Góp ý dịch vụ', 'my-esport-theme'); ?></h3>
+                    <ul style="color: var(--color-text-muted); text-align: left; list-style-type: none; padding-bottom: var(--space-xs); font-size: 0.95rem; line-height: 1.8;">
+                        <li>• <?php esc_html_e('Góp ý trải nghiệm mua sắm', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Phản hồi về sản phẩm', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Đề xuất cải thiện dịch vụ', 'my-esport-theme'); ?></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Newsletter Section -->
     <section class="newsletter-section" style="background-color: var(--color-surface);">
         <div class="container">
