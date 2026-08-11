@@ -2128,3 +2128,89 @@ ul.polylang-switcher-custom li.current-lang a {
     margin: 0 !important;
     float: none !important;
 }
+
+/* Marquee Slider */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: var(--space-md) 0;
+    display: flex;
+    background-color: var(--color-background);
+}
+
+.marquee-track {
+    display: flex;
+    gap: var(--space-lg);
+    animation: marquee-slide-right 30s linear infinite;
+    /* Slide left to right starting from offset */
+    transform: translateX(-50%);
+    min-width: max-content;
+}
+
+@keyframes marquee-slide-right {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.marquee-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    width: 250px;
+    height: 180px;
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.marquee-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    transition: transform 0.4s ease;
+}
+
+.marquee-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary-red);
+}
+
+.marquee-card:hover img {
+    transform: scale(1.05);
+}
+
+.marquee-name {
+    position: absolute;
+    bottom: var(--space-md);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFFFFF;
+    color: var(--color-text);
+    padding: 0.6rem 1.25rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+}
+
+.marquee-card:hover .marquee-name {
+    background-color: var(--color-primary-red);
+    color: #FFFFFF;
+}
+
+.marquee-container:hover .marquee-track {
+    animation-play-state: paused;
+}

@@ -24,47 +24,73 @@
         </div>
     </section>
 
-    <!-- Category Section -->
-    <section class="category-section">
-        <div class="container">
-            <h2 class="section-heading"><?php esc_html_e('Shop By Category', 'my-esport-theme'); ?></h2>
-            <div class="category-grid">
-                <?php
-                if (class_exists('WooCommerce')) {
-                    $args = array(
-                        'taxonomy' => 'product_cat',
-                        'hide_empty' => false,
-                        'number' => 6
-                    );
-                    $product_categories = get_terms($args);
-                    if (!empty($product_categories) && !is_wp_error($product_categories)) {
-                        $target_cats = array('Football', 'Basketball', 'Jerseys', 'Shorts', 'Training Wear', 'Sports Accessories');
-                        $count = 0;
-                        foreach ($product_categories as $category) {
-                            if (in_array($category->name, $target_cats) || in_array(htmlspecialchars_decode($category->name), $target_cats)) {
-                                $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true);
-                                $image_url = $thumbnail_id ? wp_get_attachment_url($thumbnail_id) : wc_placeholder_img_src();
-                                ?>
-                                <a href="<?php echo esc_url(get_term_link($category)); ?>" class="category-card">
-                                    <img loading="lazy" src="<?php echo esc_url($image_url); ?>"
-                                        alt="<?php echo esc_attr($category->name); ?>">
-                                    <span class="category-name"><?php echo esc_html($category->name); ?></span>
-                                </a>
-                                <?php
-                                $count++;
-                                if ($count >= 6) break;
+    <!-- Brand Section -->
+    <section class="category-section" style="overflow: hidden; padding-top: 0; padding-bottom: 0; padding-inline: 0;">
+        <div class="container" style="max-width: 100%; padding: 0;">
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <?php
+                    $dynamic_brands = array();
+                    if (class_exists('WooCommerce')) {
+                        $args = array(
+                            'taxonomy' => 'product_brand',
+                            'hide_empty' => true,
+                            'number' => 10
+                        );
+                        $product_brands = get_terms($args);
+                        if (!empty($product_brands) && !is_wp_error($product_brands)) {
+                            foreach ($product_brands as $brand) {
+                                $brand_link = get_term_link($brand);
+                                if (!is_wp_error($brand_link)) {
+                                    $thumbnail_id = get_term_meta($brand->term_id, 'thumbnail_id', true);
+                                    $image_url = $thumbnail_id ? wp_get_attachment_url($thumbnail_id) : wc_placeholder_img_src();
+                                    $dynamic_brands[] = array(
+                                        'name' => $brand->name,
+                                        'image' => $image_url,
+                                        'link' => $brand_link
+                                    );
+                                }
                             }
                         }
-                        if ($count === 0) {
-                            echo '<p>' . esc_html__('No matching categories found.', 'my-esport-theme') . '</p>';
-                        }
-                    } else {
-                        echo '<p>' . esc_html__('No categories found.', 'my-esport-theme') . '</p>';
                     }
-                } else {
-                    echo '<p>' . esc_html__('WooCommerce is not active.', 'my-esport-theme') . '</p>';
-                }
-                ?>
+
+                    $famous_brands = array(
+                        array('name' => 'Nike', 'image' => 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80', 'link' => '#'),
+                        array('name' => 'Adidas', 'image' => 'https://images.unsplash.com/photo-1518002171953-a080ee817e1f?w=400&q=80', 'link' => '#'),
+                        array('name' => 'Puma', 'image' => 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&q=80', 'link' => '#'),
+                        array('name' => 'Under Armour', 'image' => 'https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?w=400&q=80', 'link' => '#'),
+                        array('name' => 'Reebok', 'image' => 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=400&q=80', 'link' => '#'),
+                        array('name' => 'New Balance', 'image' => 'https://images.unsplash.com/photo-1539185441755-769473a23570?w=400&q=80', 'link' => '#'),
+                        array('name' => 'Asics', 'image' => 'https://images.unsplash.com/photo-1554744512-d6c603f27c54?w=400&q=80', 'link' => '#')
+                    );
+                    
+                    // Merge dynamic and static
+                    $all_brands = array_merge($dynamic_brands, $famous_brands);
+                    
+                    // Filter duplicates by name just in case
+                    $unique_brands = array();
+                    $names = array();
+                    foreach ($all_brands as $brand) {
+                        if (!in_array(strtolower($brand['name']), $names)) {
+                            $unique_brands[] = $brand;
+                            $names[] = strtolower($brand['name']);
+                        }
+                    }
+
+                    // Duplicate the array multiple times to ensure the marquee track is long enough for smooth infinite sliding
+                    $display_brands = array_merge($unique_brands, $unique_brands, $unique_brands, $unique_brands);
+
+                    foreach ($display_brands as $brand) {
+                        ?>
+                        <a href="<?php echo esc_url($brand['link']); ?>" class="marquee-card">
+                            <img loading="lazy" src="<?php echo esc_url($brand['image']); ?>"
+                                alt="<?php echo esc_attr($brand['name']); ?>">
+                            <span class="marquee-name"><?php echo esc_html($brand['name']); ?></span>
+                        </a>
+                        <?php
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </section>
