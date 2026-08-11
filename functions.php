@@ -56,3 +56,42 @@ function my_esport_theme_add_register_to_login() {
     </div>
     <?php
 }
+
+// Force English UI for specific WooCommerce elements in the presentation layer
+add_filter( 'woocommerce_product_add_to_cart_text', 'my_esport_theme_add_to_cart_text', 99, 2 );
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'my_esport_theme_add_to_cart_text', 99, 2 );
+
+function my_esport_theme_add_to_cart_text( $text, $product ) {
+    if ( $product ) {
+        $product_type = $product->get_type();
+        if ( $product_type === 'variable' ) {
+            return esc_html__( 'Select Options', 'my-esport-theme' );
+        } elseif ( $product_type === 'grouped' ) {
+            return esc_html__( 'View Products', 'my-esport-theme' );
+        } elseif ( $product_type === 'external' ) {
+            return esc_html__( 'Buy Product', 'my-esport-theme' );
+        } elseif ( ! $product->is_in_stock() ) {
+            return esc_html__( 'Read More', 'my-esport-theme' );
+        }
+    }
+    return esc_html__( 'Add to Cart', 'my-esport-theme' );
+}
+
+add_filter( 'gettext', 'my_esport_theme_force_english_woo_strings', 99, 3 );
+function my_esport_theme_force_english_woo_strings( $translated_text, $text, $domain ) {
+    if ( $domain === 'woocommerce' ) {
+        switch ( $text ) {
+            case 'Description':
+                return 'Description';
+            case 'Reviews (%s)':
+                return 'Reviews (%s)';
+            case 'Reviews':
+                return 'Reviews';
+            case 'Additional information':
+                return 'Additional Information';
+            case 'Related products':
+                return 'Related Products';
+        }
+    }
+    return $translated_text;
+}

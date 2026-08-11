@@ -36,12 +36,14 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         </a>
     </div>
     
-    <span class="product-category"><?php echo wc_get_product_category_list( $product->get_id(), ', ' ); ?></span>
-    
-    <a href="<?php the_permalink(); ?>"><h3 class="product-name"><?php the_title(); ?></h3></a>
-    
-    <div class="product-price-wrap">
-        <?php echo $product->get_price_html(); ?>
+    <div class="product-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+        <span class="product-category" style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.25rem;"><?php echo wc_get_product_category_list( $product->get_id(), ', ' ); ?></span>
+        
+        <a href="<?php the_permalink(); ?>" style="text-decoration: none;"><h3 class="product-name"><?php the_title(); ?></h3></a>
+        
+        <div class="product-price-wrap" style="margin-top: auto;">
+            <?php echo $product->get_price_html(); ?>
+        </div>
     </div>
     
     <a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" data-product_id="<?php echo esc_attr( $product->get_id() ); ?>" class="add-to-cart-btn ajax_add_to_cart" rel="nofollow">

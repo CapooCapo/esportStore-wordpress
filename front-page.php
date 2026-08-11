@@ -5,7 +5,7 @@
         <div class="hero-background" style="position: absolute; inset: 0; z-index: 0;">
             <img src="https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
                 alt="Athletes in high-performance sportswear" style="width: 100%; height: 100%; object-fit: cover;">
-            <!-- Removed opaque overlay to let image dominate -->
+            <div class="hero-gradient" style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0) 100%);"></div>
         </div>
         <div class="container hero-content-container" style="position: relative; z-index: 1;">
             <div class="hero-content" style="max-width: 600px; padding: var(--space-3xl) 0;">
