@@ -95,3 +95,15 @@ function my_esport_theme_force_english_woo_strings( $translated_text, $text, $do
     }
     return $translated_text;
 }
+
+// Add custom Hero to the Shop page archive
+add_action( 'woocommerce_archive_description', 'my_esport_theme_shop_header', 10 );
+function my_esport_theme_shop_header() {
+    if ( is_shop() ) {
+        echo '<header class="page-header" style="text-align: center; margin-bottom: var(--space-4xl); padding-top: var(--space-2xl);">';
+        echo '<span class="eyebrow">' . esc_html__( 'OUR CATALOG', 'my-esport-theme' ) . '</span>';
+        echo '<h1 class="section-heading">' . esc_html__( 'Shop Sportswear', 'my-esport-theme' ) . '</h1>';
+        echo '<p class="section-description">' . esc_html__( 'Explore football and basketball jerseys, training wear, sports shorts, and selected accessories for training, competition, and everyday sports use.', 'my-esport-theme' ) . '</p>';
+        echo '</header>';
+    }
+}

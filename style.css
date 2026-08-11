@@ -538,8 +538,13 @@ button {
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: var(--space-md);
-    color: var(--color-text);
+    color: #ffffff;
     letter-spacing: -0.02em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content .section-description {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-actions {
@@ -645,6 +650,7 @@ button {
     position: relative;
     display: flex;
     flex-direction: column;
+    height: 100%;
     transition: transform 0.2s ease;
     margin: 0;
     width: 100%;
@@ -731,6 +737,11 @@ button {
     font-weight: 700;
     color: var(--color-text);
     margin-bottom: 0.35rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3;
 }
 
 .product-price-wrap {
