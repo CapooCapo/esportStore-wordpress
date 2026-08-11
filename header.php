@@ -20,9 +20,30 @@
                 <ul class="nav-list">
                     <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e('Home', 'my-esport-theme'); ?></a></li>
                     <li><a href="<?php echo function_exists('wc_get_page_permalink') ? esc_url(wc_get_page_permalink('shop')) : esc_url(home_url('/shop')); ?>"><?php esc_html_e('Shop', 'my-esport-theme'); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#collection"><?php esc_html_e('Collection', 'my-esport-theme'); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#about"><?php esc_html_e('About', 'my-esport-theme'); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#contact"><?php esc_html_e('Contact', 'my-esport-theme'); ?></a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="<?php echo function_exists('wc_get_page_permalink') ? esc_url(wc_get_page_permalink('shop')) : esc_url(home_url('/shop')); ?>"><?php esc_html_e('Categories', 'my-esport-theme'); ?></a>
+                        <ul class="nav-dropdown">
+                            <?php
+                            if (class_exists('WooCommerce')) {
+                                $cat_args = array(
+                                    'taxonomy' => 'product_cat',
+                                    'hide_empty' => false,
+                                );
+                                $categories = get_terms($cat_args);
+                                if (!empty($categories) && !is_wp_error($categories)) {
+                                    $target_cats = array('Football', 'Basketball', 'Running', 'Training', 'Jerseys', 'Sports Accessories');
+                                    foreach ($categories as $cat) {
+                                        if (in_array($cat->name, $target_cats) || in_array(htmlspecialchars_decode($cat->name), $target_cats)) {
+                                            echo '<li><a href="' . esc_url(get_term_link($cat)) . '">' . esc_html($cat->name) . '</a></li>';
+                                        }
+                                    }
+                                }
+                            }
+                            ?>
+                        </ul>
+                    </li>
+                    <li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e('About', 'my-esport-theme'); ?></a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e('Contact', 'my-esport-theme'); ?></a></li>
                 </ul>
             </nav>
 

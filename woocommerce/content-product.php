@@ -25,9 +25,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         <?php elseif ( ( time() - strtotime( get_the_date('Y-m-d') ) ) < ( 30 * 24 * 60 * 60 ) ) : ?>
             <span class="product-badge"><?php esc_html_e('NEW', 'my-esport-theme'); ?></span>
         <?php endif; ?>
-        <button class="wishlist-btn" aria-label="<?php esc_attr_e('Add to Wishlist', 'my-esport-theme'); ?>">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-        </button>
         <a href="<?php the_permalink(); ?>">
             <?php 
             if ( has_post_thumbnail() ) {

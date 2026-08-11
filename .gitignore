@@ -73,3 +73,5 @@ access_log
 .ftpconfig
 sftp-config.json
 CLAUDE.md
+
+.ai/
