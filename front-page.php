@@ -1,14 +1,14 @@
 <?php get_header(); ?>
 <main>
     <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-background">
+    <section id="home" class="hero-section" style="position: relative; overflow: hidden; border-radius: var(--radius-xl); margin: var(--space-md) var(--space-md) var(--space-4xl);">
+        <div class="hero-background" style="position: absolute; inset: 0; z-index: 0;">
             <img src="https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-                alt="Athletes in high-performance sportswear">
-            <div class="hero-overlay"></div>
+                alt="Athletes in high-performance sportswear" style="width: 100%; height: 100%; object-fit: cover;">
+            <!-- Removed opaque overlay to let image dominate -->
         </div>
-        <div class="container hero-content-container">
-            <div class="hero-content">
+        <div class="container hero-content-container" style="position: relative; z-index: 1;">
+            <div class="hero-content" style="max-width: 600px; padding: var(--space-3xl) 0;">
                 <span class="eyebrow"><?php esc_html_e('NEW ARRIVALS', 'my-esport-theme'); ?></span>
                 <h1 class="hero-heading"><?php esc_html_e('High-Performance Sportswear', 'my-esport-theme'); ?></h1>
                 <p class="section-description">
@@ -38,7 +38,7 @@
                     );
                     $product_categories = get_terms($args);
                     if (!empty($product_categories) && !is_wp_error($product_categories)) {
-                        $target_cats = array('Football', 'Basketball', 'Running', 'Training', 'Jerseys', 'Sports Accessories');
+                        $target_cats = array('Football', 'Basketball', 'Jerseys', 'Shorts', 'Training Wear', 'Sports Accessories');
                         $count = 0;
                         foreach ($product_categories as $category) {
                             if (in_array($category->name, $target_cats) || in_array(htmlspecialchars_decode($category->name), $target_cats)) {
@@ -172,7 +172,7 @@
     </section>
 
     <!-- Promotion Section -->
-    <section id="promotion" class="promotion-section">
+    <section id="promotion" class="promotion-section" style="border-radius: var(--radius-xl); margin: var(--space-3xl) var(--space-md); overflow: hidden; position: relative;">
         <img loading="lazy"
             src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
             alt="<?php esc_attr_e('Sportswear promotion', 'my-esport-theme'); ?>" class="promotion-bg">
@@ -247,14 +247,21 @@
             <div class="about-image">
                 <img loading="lazy"
                     src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                    alt="<?php esc_attr_e('Giới thiệu thương hiệu thể thao', 'my-esport-theme'); ?>">
+                    alt="<?php esc_attr_e('Sportswear brand introduction', 'my-esport-theme'); ?>">
             </div>
             <div class="about-content">
-                <span class="eyebrow"><?php esc_html_e('VỀ CHÚNG TÔI', 'my-esport-theme'); ?></span>
-                <h2 class="section-heading"><?php esc_html_e('Giới thiệu thương hiệu', 'my-esport-theme'); ?></h2>
-                <p class="section-description" style="text-align: left;">
-                    <?php esc_html_e('Chúng tôi chuyên cung cấp áo bóng đá, áo bóng rổ và trang phục dành cho người yêu thể thao. Với phong cách thiết kế trẻ trung và năng động, sản phẩm của chúng tôi luôn mang lại cảm giác thoải mái trên sân tập cũng như dạo phố. Trải nghiệm mua sắm tại cửa hàng được tối ưu đơn giản, giúp bạn nhanh chóng chọn được bộ đồ ưng ý cho mọi hoạt động.', 'my-esport-theme'); ?>
+                <span class="eyebrow"><?php esc_html_e('ABOUT US', 'my-esport-theme'); ?></span>
+                <h2 class="section-heading"><?php esc_html_e('Sportswear Made for the Game', 'my-esport-theme'); ?></h2>
+                <p class="section-description" style="text-align: left; margin-bottom: var(--space-md);">
+                    <?php esc_html_e('We are a sportswear store focused on football and basketball apparel for players, fans, and people who simply enjoy the game.', 'my-esport-theme'); ?>
                 </p>
+                <ul style="color: var(--color-text); text-align: left; list-style-type: none; padding-bottom: var(--space-xs); font-size: 0.95rem; line-height: 1.8;">
+                    <li><strong><?php esc_html_e('What We Offer', 'my-esport-theme'); ?></strong></li>
+                    <li>• <?php esc_html_e('Football Jerseys', 'my-esport-theme'); ?></li>
+                    <li>• <?php esc_html_e('Basketball Jerseys', 'my-esport-theme'); ?></li>
+                    <li>• <?php esc_html_e('Training Wear', 'my-esport-theme'); ?></li>
+                    <li><strong><?php esc_html_e('Our Approach', 'my-esport-theme'); ?></strong>: <?php esc_html_e('Sportswear for an active lifestyle.', 'my-esport-theme'); ?></li>
+                </ul>
             </div>
         </div>
     </section>
@@ -263,10 +270,10 @@
     <section class="contact-section">
         <div class="container">
             <div class="contact-content">
-                <span class="eyebrow"><?php esc_html_e('KẾT NỐI VỚI CHÚNG TÔI', 'my-esport-theme'); ?></span>
-                <h2 class="section-heading"><?php esc_html_e('Liên hệ với chúng tôi', 'my-esport-theme'); ?></h2>
+                <span class="eyebrow"><?php esc_html_e('CONTACT US', 'my-esport-theme'); ?></span>
+                <h2 class="section-heading"><?php esc_html_e('How Can We Help?', 'my-esport-theme'); ?></h2>
                 <p class="section-description">
-                    <?php esc_html_e('Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn trong suốt quá trình mua sắm và sử dụng sản phẩm.', 'my-esport-theme'); ?>
+                    <?php esc_html_e('We are always ready to listen and assist you throughout your shopping experience.', 'my-esport-theme'); ?>
                 </p>
             </div>
             <div class="contact-info-grid">
@@ -276,11 +283,12 @@
                         <circle cx="20" cy="21" r="1"></circle>
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
-                    <h3 class="benefit-title" style="margin-bottom: var(--space-sm); font-size: 1.1rem;"><?php esc_html_e('Hỗ trợ đơn hàng', 'my-esport-theme'); ?></h3>
+                    <h3 class="benefit-title" style="margin-bottom: var(--space-sm); font-size: 1.1rem;"><?php esc_html_e('Order Support', 'my-esport-theme'); ?></h3>
                     <ul style="color: var(--color-text-muted); text-align: left; list-style-type: none; padding-bottom: var(--space-xs); font-size: 0.95rem; line-height: 1.8;">
-                        <li>• <?php esc_html_e('Hỏi về trạng thái đơn hàng', 'my-esport-theme'); ?></li>
-                        <li>• <?php esc_html_e('Thông tin sản phẩm', 'my-esport-theme'); ?></li>
-                        <li>• <?php esc_html_e('Thắc mắc giao nhận', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Order status', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Product information', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Shipping and delivery', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Order-related questions', 'my-esport-theme'); ?></li>
                     </ul>
                 </div>
                 <div class="contact-info-card">
@@ -290,24 +298,29 @@
                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                         <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                     </svg>
-                    <h3 class="benefit-title" style="margin-bottom: var(--space-sm); font-size: 1.1rem;"><?php esc_html_e('Hợp tác kinh doanh', 'my-esport-theme'); ?></h3>
+                    <h3 class="benefit-title" style="margin-bottom: var(--space-sm); font-size: 1.1rem;"><?php esc_html_e('Business Partnerships', 'my-esport-theme'); ?></h3>
                     <ul style="color: var(--color-text-muted); text-align: left; list-style-type: none; padding-bottom: var(--space-xs); font-size: 0.95rem; line-height: 1.8;">
-                        <li>• <?php esc_html_e('Hợp tác bán hàng', 'my-esport-theme'); ?></li>
-                        <li>• <?php esc_html_e('Đặt áo cho đội bóng', 'my-esport-theme'); ?></li>
-                        <li>• <?php esc_html_e('Đối tác kinh doanh', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Sports teams', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Retail partnerships', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Business collaborations', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Sports-related projects', 'my-esport-theme'); ?></li>
                     </ul>
                 </div>
                 <div class="contact-info-card">
                     <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                     </svg>
-                    <h3 class="benefit-title" style="margin-bottom: var(--space-sm); font-size: 1.1rem;"><?php esc_html_e('Góp ý dịch vụ', 'my-esport-theme'); ?></h3>
+                    <h3 class="benefit-title" style="margin-bottom: var(--space-sm); font-size: 1.1rem;"><?php esc_html_e('Service Feedback', 'my-esport-theme'); ?></h3>
                     <ul style="color: var(--color-text-muted); text-align: left; list-style-type: none; padding-bottom: var(--space-xs); font-size: 0.95rem; line-height: 1.8;">
-                        <li>• <?php esc_html_e('Góp ý trải nghiệm mua sắm', 'my-esport-theme'); ?></li>
-                        <li>• <?php esc_html_e('Phản hồi về sản phẩm', 'my-esport-theme'); ?></li>
-                        <li>• <?php esc_html_e('Đề xuất cải thiện dịch vụ', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Products', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Website', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Ordering process', 'my-esport-theme'); ?></li>
+                        <li>• <?php esc_html_e('Customer service', 'my-esport-theme'); ?></li>
                     </ul>
                 </div>
+            </div>
+            <div style="text-align: center; margin-top: var(--space-2xl);">
+                <a href="<?php echo esc_url(home_url('/contact')); ?>" class="btn btn-primary"><?php esc_html_e('Get in Touch', 'my-esport-theme'); ?></a>
             </div>
         </div>
     </section>

@@ -35,11 +35,11 @@ Tags: modern, fashion, e-commerce
     --space-3xl: 64px;
     --space-4xl: 80px;
 
-    /* Radius Tokens - OceanWP style (sharper, cleaner) */
-    --radius-sm: 2px;
-    --radius-md: 4px;
-    --radius-lg: 6px;
-    --radius-xl: 8px;
+    /* Radius Tokens - Modern Sportswear Style */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
     --radius-full: 9999px;
 
     /* Shadow Tokens */
@@ -122,8 +122,9 @@ button {
 
 .container {
     max-width: 1200px;
+    width: calc(100% - 32px);
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0;
 }
 
 /* Global Section Spacing (Desktop 96px) */
@@ -277,10 +278,13 @@ button {
 }
 
 .main-nav .nav-list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--color-text);
-    padding: 0.5rem 0.85rem;
+    padding: 0 0.85rem;
     border-radius: var(--radius-sm);
     transition: color 0.2s ease;
 }
@@ -638,14 +642,10 @@ button {
 
 .product-card,
 .woocommerce ul.products li.product {
+    position: relative;
     display: flex;
     flex-direction: column;
-    position: relative;
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: var(--space-md);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease;
     margin: 0;
     width: 100%;
 }
@@ -653,7 +653,6 @@ button {
 .product-card:hover,
 .woocommerce ul.products li.product:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
 }
 
 .product-image-wrap {
