@@ -76,3 +76,6 @@ CLAUDE.md
 
 .ai/
 wordpress/
+
+* text=auto
+*.htaccess text eol=lf

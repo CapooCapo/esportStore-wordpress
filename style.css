@@ -261,7 +261,9 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
+    min-height: 100px;
+    padding-top: var(--space-xs);
+    padding-bottom: var(--space-xs);
 }
 
 .logo a {
@@ -270,11 +272,19 @@ button {
     font-weight: 700;
     letter-spacing: -0.02em;
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.logo a img {
+    max-height: 85px;
+    width: auto;
+    object-fit: contain;
 }
 
 .main-nav .nav-list {
     display: flex;
-    gap: var(--space-md);
+    gap: var(--space-sm);
 }
 
 .main-nav .nav-list a {
@@ -284,8 +294,9 @@ button {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--color-text);
-    padding: 0 0.85rem;
+    padding: 0 0.5rem;
     border-radius: var(--radius-sm);
+    white-space: nowrap;
     transition: color 0.2s ease;
 }
 
@@ -429,42 +440,28 @@ button {
     text-align: center;
 }
 
-.language-switcher {
+.header-language {
     display: flex;
     align-items: center;
+    margin-left: var(--space-sm);
+    margin-right: var(--space-sm);
 }
 
-.polylang-switcher-custom {
-    display: flex;
-    align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--radius-md);
-    overflow: hidden;
+.header-language select {
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    padding: 0.4rem 0.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    cursor: pointer;
+    min-height: 44px;
 }
 
-.lang-btn {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: transparent;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    text-decoration: none;
-    min-height: 40px;
-    padding: 0 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-.lang-btn.active {
-    color: var(--color-primary-dark);
-    background-color: var(--color-accent-yellow);
-    font-weight: 700;
-}
-
-.lang-btn:hover:not(.active) {
-    color: #FFFFFF;
-    background-color: var(--color-primary-red);
+.header-language select:focus {
+    outline: none;
+    border-color: var(--color-primary-red);
 }
 
 .mobile-menu-btn {
@@ -1028,11 +1025,16 @@ button {
 }
 
 .footer-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #FFFFFF;
-    margin-bottom: var(--space-sm);
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: var(--space-md);
+    min-height: 44px; /* Ensure minimum touch target size */
+}
+
+.footer-logo img {
+    max-height: 150px;
+    width: auto;
+    object-fit: contain;
 }
 
 .footer-desc {

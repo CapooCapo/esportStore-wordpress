@@ -3,7 +3,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo"><?php bloginfo( 'name' ); ?></a>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo" aria-label="<?php esc_attr_e('Home', 'my-esport-theme'); ?>">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="<?php bloginfo('name'); ?> Logo">
+                    </a>
                     <p class="footer-desc"><?php esc_html_e('Modern clothing for everyday life.', 'my-esport-theme'); ?></p>
                         <!-- Social Links Removed - No fake navigation links allowed -->
                 </div>

@@ -51,16 +51,43 @@ function my_esport_theme_wrapper_end() {
     echo '</div></section></main>';
 }
 
+function my_esport_theme_get_register_url() {
+    $page = get_page_by_path( 'register' );
+    if ( $page ) {
+        if ( function_exists( 'pll_get_post' ) ) {
+            $translated_id = pll_get_post( $page->ID );
+            if ( $translated_id ) {
+                return get_permalink( $translated_id );
+            }
+        }
+        return get_permalink( $page->ID );
+    }
+    return home_url( '/register/' );
+}
+
 // Add Register UI to WooCommerce Login form
 add_action('woocommerce_login_form_end', 'my_esport_theme_add_register_to_login');
 function my_esport_theme_add_register_to_login() {
-    $register_url = wp_registration_url();
+    $register_url = my_esport_theme_get_register_url();
     ?>
     <div class="login-register-prompt">
         <p class="login-register-text"><?php esc_html_e("Don't have an account?", 'my-esport-theme'); ?></p>
         <a href="<?php echo esc_url($register_url); ?>" class="btn btn-secondary btn-register"><?php esc_html_e('Register', 'my-esport-theme'); ?></a>
     </div>
     <?php
+}
+
+// Validate custom password confirmation field during WooCommerce registration
+add_filter( 'woocommerce_process_registration_errors', 'my_esport_theme_validate_password_confirmation', 10, 4 );
+function my_esport_theme_validate_password_confirmation( $validation_error, $username, $password, $email ) {
+    if ( isset( $_POST['register'] ) && isset( $_POST['password'] ) && 'no' === get_option( 'woocommerce_registration_generate_password' ) ) {
+        if ( empty( $_POST['password_confirm'] ) ) {
+            $validation_error->add( 'password_confirm_error', __( 'Please confirm your password.', 'my-esport-theme' ) );
+        } elseif ( $_POST['password'] !== $_POST['password_confirm'] ) {
+            $validation_error->add( 'password_mismatch', __( 'Passwords do not match.', 'my-esport-theme' ) );
+        }
+    }
+    return $validation_error;
 }
 
 // Force English UI for specific WooCommerce elements in the presentation layer
@@ -99,6 +126,22 @@ function my_esport_theme_force_english_woo_strings( $translated_text, $text, $do
                 return 'Additional Information';
             case 'Related products':
                 return 'Related Products';
+            case 'Login':
+                return 'Login';
+            case 'Username or email address':
+                return 'Username or email address';
+            case 'Password':
+                return 'Password';
+            case 'Remember me':
+                return 'Remember me';
+            case 'Log in':
+                return 'Log in';
+            case 'Lost your password?':
+                return 'Lost your password?';
+            case 'Email address':
+                return 'Email address';
+            case 'Register':
+                return 'Register';
         }
     }
     return $translated_text;
@@ -139,6 +182,13 @@ add_filter( 'template_include', 'my_esport_theme_core_page_routing', 99 );
 function my_esport_theme_core_page_routing( $template ) {
     if ( is_page( array( 'about', 'gioi-thieu' ) ) ) {
         $new_template = locate_template( array( 'page-about.php' ) );
+        if ( ! empty( $new_template ) ) {
+            return $new_template;
+        }
+    }
+    
+    if ( is_page( array( 'register', 'dang-ky' ) ) ) {
+        $new_template = locate_template( array( 'page-register.php' ) );
         if ( ! empty( $new_template ) ) {
             return $new_template;
         }

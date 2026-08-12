@@ -16,7 +16,9 @@
     <header class="site-header">
         <div class="container header-container">
             <div class="logo">
-                <a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
+                <a href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php esc_attr_e('Home', 'my-esport-theme'); ?>">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="<?php bloginfo('name'); ?> Logo">
+                </a>
             </div>
 
             <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
@@ -55,7 +57,11 @@
                         </button>
                     </form>
                 </div>
-            </div>
+            <?php if ( shortcode_exists( 'gtranslate' ) ) : ?>
+                <div class="header-language">
+                    <?php echo do_shortcode('[gtranslate]'); ?>
+                </div>
+            <?php endif; ?>
             <?php
             $myaccount_url = function_exists('wc_get_page_permalink') ? wc_get_page_permalink('myaccount') : '#account';
             if (is_user_logged_in()):
@@ -102,6 +108,7 @@
                 <span
                     class="cart-count"><?php echo function_exists('WC') && WC()->cart ? esc_html(WC()->cart->get_cart_contents_count()) : '0'; ?></span>
             </a>
+            </div> <!-- End of .header-actions -->
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-label="Toggle Menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
