@@ -78,4 +78,4 @@ CLAUDE.md
 wordpress/
 
 * text=auto
-*.htaccess text eol=lf
+*.htaccess text eol=lfwordpress/
